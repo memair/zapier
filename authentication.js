@@ -27,12 +27,12 @@ const getAccessToken = (z, bundle) => {
   });
 };
 
-const testAuth = (z /*, bundle*/) => {
+const testAuth = (z, bundle) => {
   const promise = z.request({
     method: 'GET',
     url: `https://memair.com/api/auth.test`,
     params: {
-      access_token: '0000000000000000000000000000000000000000000000000000000000000000' // Have to figure out how to get the actual access token here
+      access_token: bundle.authData.access_token
     }
   });
 
