@@ -1,3 +1,4 @@
+const DigitalactivityResource = require('./resources/digital_activity');
 const LocationResource = require('./resources/location');
 // You'll want to set these with either `CLIENT_ID=abc zapier test` or `zapier env 1.0.0 CLIENT_ID abc`
 
@@ -28,6 +29,7 @@ const App = {
   ],
 
   resources: {
+    [DigitalactivityResource.key]: DigitalactivityResource,
     [LocationResource.key]: LocationResource,
   },
 

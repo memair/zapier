@@ -1,13 +1,15 @@
 // get a list of locations
-const listLocations = (z) => {
+const listLocations = (z, bundle) => {
   const responsePromise = z.request({
-    url: 'https://jsonplaceholder.typicode.com/posts',
+    method: 'POST',
+    url: 'https://memair.com/graphql',
     params: {
-      order_by: 'id desc'
+      query: 'query{Locations(order: timestamp_desc first: 100){id lat lon timestamp}}',
+      access_token: bundle.authData.access_token
     }
   });
   return responsePromise
-    .then(response => z.JSON.parse(response.content));
+    .then(response => z.JSON.parse(response.content)['data']['Locations']);
 };
 
 module.exports = {
