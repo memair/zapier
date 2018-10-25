@@ -18,7 +18,7 @@ const createDigitalactivity = (z, bundle) => {
     method: 'POST',
     url: 'https://memair.com/graphql',
     params: {
-      query: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: "${JSON.stringify(bundle.inputData.meta_data).replace(/[\"]/g, '\\"')}" }]) {digital_activities {id timestamp duration meta}}}`,
+      query: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: ${JSON.stringify(JSON.stringify(bundle.inputData.meta_data, null, "\r\t"))} }]) {digital_activities {id timestamp duration meta}}}`,
       access_token: bundle.authData.access_token
     }
   });
