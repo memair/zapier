@@ -29,13 +29,17 @@ const createDigitalactivity = (z, bundle) => {
 yaml = require('js-yaml');
 fs   = require('fs');
 
-var digital_activity_types = yaml.safeLoad(fs.readFileSync('data-types/digital_activity_types.yml', 'utf8'));
+var digital_activity_types;
 var choices = {};
+try{
+  digital_activity_types = yaml.safeLoad(fs.readFileSync('data-types/digital_activity_types.yml', 'utf8'));
 
-digital_activity_types.forEach(function(digital_activity_type){
-  choices[digital_activity_type.slug] = digital_activity_type.name
-});
-
+  digital_activity_types.forEach(function(digital_activity_type){
+    choices[digital_activity_type.slug] = digital_activity_type.name
+  });
+}catch(e){
+  // this prevents a little bug on Zapier's side
+}
 
 module.exports = {
   key: 'digital_activity',
