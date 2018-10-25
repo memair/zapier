@@ -26,6 +26,17 @@ const createDigitalactivity = (z, bundle) => {
     .then(response => z.JSON.parse(response.content));
 };
 
+yaml = require('js-yaml');
+fs   = require('fs');
+
+var digital_activity_types = yaml.safeLoad(fs.readFileSync('data-types/digital_activity_types.yml', 'utf8'));
+var choices = {};
+
+digital_activity_types.forEach(function(digital_activity_type){
+  choices[digital_activity_type.slug] = digital_activity_type.name
+});
+
+
 module.exports = {
   key: 'digital_activity',
   noun: 'Digital Activity',
@@ -70,13 +81,7 @@ module.exports = {
           key: 'type',
           required: true,
           label: 'Digital Activity Type',
-          choices: {
-            'played_game': 'Played game',
-            'watched_video': 'Watched video',
-            'visited_website': 'Visited website',
-            'sent_communication': 'Sent communication',
-            'received_communication': 'Received communication',
-          }
+          choices: choices
         }
       ],
       perform: createDigitalactivity
