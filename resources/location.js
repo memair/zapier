@@ -3,10 +3,10 @@ const listLocations = (z, bundle) => {
   const responsePromise = z.request({
     method: 'POST',
     url: 'https://memair.com/graphql',
-    params: {
-      query: 'query{Locations(order: timestamp_desc first: 100){id lat lon timestamp}}',
-      access_token: bundle.authData.access_token
-    }
+    headers: {
+      'access_token': bundle.authData.access_token
+    },
+    body: 'query{Locations(first: 100){id lat lon timestamp source accuracy}}'
   });
   return responsePromise
     .then(response => z.JSON.parse(response.content)['data']['Locations']);

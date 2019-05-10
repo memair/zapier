@@ -3,13 +3,13 @@ const listDigitalactivitys = (z, bundle) => {
   const responsePromise = z.request({
     method: 'POST',
     url: 'https://memair.com/graphql',
-    params: {
-      query: 'query{DigitalActivities(order:timestamp_desc first: 100){id timestamp duration digital_activity_type{slug}}}',
-      access_token: bundle.authData.access_token
-    }
+    headers: {
+      'access_token': bundle.authData.access_token
+    },
+    body: 'query{DigitalActivities(first: 100){id timestamp duration digital_activity_type{slug} meta source}}'
   });
   return responsePromise
-    .then(response => z.JSON.parse(response.content));
+    .then(response => z.JSON.parse(response.content)['data']['DigitalActivities']);
 };
 
 // create a digital_activity
@@ -17,10 +17,10 @@ const createDigitalactivity = (z, bundle) => {
   const responsePromise = z.request({
     method: 'POST',
     url: 'https://memair.com/graphql',
-    params: {
-      query: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: ${JSON.stringify(JSON.stringify(bundle.inputData.meta_data, null, "\r\t"))} }]) {digital_activities {id timestamp duration meta}}}`,
-      access_token: bundle.authData.access_token
-    }
+    headers: {
+      'access_token': bundle.authData.access_token
+    },
+    body: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: ${JSON.stringify(JSON.stringify(bundle.inputData.meta_data, null, "\r\t"))} }]) {digital_activities {id timestamp duration meta}}}`
   });
   return responsePromise
     .then(response => z.JSON.parse(response.content));
