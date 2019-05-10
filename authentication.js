@@ -56,7 +56,7 @@ module.exports = {
       }
     },
     getAccessToken: getAccessToken,
-    scope: 'biometric_read biometric_write digital_activity_read digital_activity_write emotion_read emotion_write journal_read journal_write location_read location_write physical_activity_read physical_activity_write user_details'
+    scope: 'biometric_read biometric_write digital_activity_read digital_activity_write emotion_read emotion_write journal_read journal_write location_read location_write medication_read medication_write physical_activity_read physical_activity_write insight_write insight_read recommendation_write recommendation_read recommendation_action recommendation_delete user_details'
   },
   test: testAuth,
   connectionLabel: '{{username}}'

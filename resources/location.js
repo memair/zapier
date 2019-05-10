@@ -6,7 +6,7 @@ const listLocations = (z, bundle) => {
     headers: {
       'access_token': bundle.authData.access_token
     },
-    body: 'query{Locations(first: 100){id lat lon timestamp source accuracy}}'
+    body: 'query{Locations(first: 100){id lat lon timestamp source point_accuracy}}'
   });
   return responsePromise
     .then(response => z.JSON.parse(response.content)['data']['Locations']);

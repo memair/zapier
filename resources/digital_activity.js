@@ -47,8 +47,8 @@ module.exports = {
 
   list: {
     display: {
-      label: 'New Digital Activity',
-      description: 'Lists Digital Activities.'
+      label: 'Digital Activities',
+      description: 'Recently created Digital Activities.'
     },
     operation: {
       perform: listDigitalactivitys
@@ -84,7 +84,7 @@ module.exports = {
         {
           key: 'type',
           required: true,
-          label: 'Digital Activity Type',
+          label: 'Digital Activity type',
           choices: choices
         }
       ],

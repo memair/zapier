@@ -1,5 +1,6 @@
 const DigitalactivityResource = require('./resources/digital_activity');
 const LocationResource = require('./resources/location');
+const RecommendationResource = require('./resources/recommendation');
 // You'll want to set these with either `CLIENT_ID=abc zapier test` or `zapier env 1.0.0 CLIENT_ID abc`
 
 const authentication = require('./authentication');
@@ -31,6 +32,7 @@ const App = {
   resources: {
     [DigitalactivityResource.key]: DigitalactivityResource,
     [LocationResource.key]: LocationResource,
+    [RecommendationResource.key]: RecommendationResource,
   },
 
   // If you want your trigger to show up, you better include it here!

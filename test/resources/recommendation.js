@@ -8,15 +8,15 @@ const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 zapier.tools.env.inject();
 
-describe('Digital Activity', () => {
-  it('should run resources.digital_activity', done => {
+describe('Recommendation', () => {
+  it('should run resources.recommendation', done => {
     const bundle = {
       inputData: {},
       authData: {
         access_token: "0".repeat(64)}
     };
 
-    appTester(App.resources.digital_activity.list.operation.perform, bundle)
+    appTester(App.resources.recommendation.list.operation.perform, bundle)
       .then(results => {
         should.exist(results);
         done();

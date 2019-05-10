@@ -8,9 +8,13 @@ const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 zapier.tools.env.inject();
 
-describe('My App', () => {
+describe('Locations', () => {
   it('should run resources.location', done => {
-    const bundle = { inputData: {} };
+    const bundle = {
+      inputData: {},
+      authData: {
+        access_token: "0".repeat(64)}
+    };
 
     appTester(App.resources.location.list.operation.perform, bundle)
       .then(results => {
