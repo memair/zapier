@@ -20,7 +20,7 @@ const createDigitalactivity = (z, bundle) => {
     headers: {
       'access_token': bundle.authData.access_token
     },
-    body: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: ${JSON.stringify(JSON.stringify(bundle.inputData.meta_data, null, "\r\t"))} }]) {digital_activities {id timestamp duration meta}}}`
+    body: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: ${JSON.stringify(JSON.stringify(bundle.inputData.meta_data, null, "\r\t"))} }]) {id}}`
   });
   return responsePromise
     .then(response => z.JSON.parse(response.content));
