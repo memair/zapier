@@ -4,7 +4,7 @@ const listRecommendations = (z, bundle) => {
     method: 'POST',
     url: 'https://memair.com/graphql',
     headers: {
-      'access_token': bundle.authData.access_token
+      'access-token': bundle.authData.access_token
     },
     body: 'query{Recommendations(first: 100){id actioned_at description duration expires_at id is_actioned is_expired is_ignored notes priority published_at source thumbnail_url timestamp title type url}}'
   });
@@ -18,7 +18,7 @@ const createRecommendation = (z, bundle) => {
     method: 'POST',
     url: 'https://memair.com/graphql',
     headers: {
-      'access_token': bundle.authData.access_token
+      'access-token': bundle.authData.access_token
     },
     body: `mutation {Create(recommendations: [{type: ${bundle.inputData.type} ${(bundle.inputData.source != null) ? 'source: "' + bundle.inputData.source.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : ''} ${(bundle.inputData.notes != null) ? 'notes: "' + bundle.inputData.notes.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : ''} priority: ${bundle.inputData.priority} expires_at: "${bundle.inputData.expires_at}" ${(bundle.inputData.url != null) ? 'url: "' + bundle.inputData.url.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : ''} ${(bundle.inputData.title != null) ? 'title: "' + bundle.inputData.title.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : ''} ${(bundle.inputData.description != null) ? 'description: "' + bundle.inputData.description.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : ''} ${(bundle.inputData.thumbnail_url != null) ? 'thumbnail_url: "' + bundle.inputData.thumbnail_url.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"' : ''} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} ${(bundle.inputData.published_at != null) ? 'published_at: "' + bundle.inputData.published_at + '"' : ''}}]) {id}}`
   });

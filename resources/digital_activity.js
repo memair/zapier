@@ -4,7 +4,7 @@ const listDigitalactivitys = (z, bundle) => {
     method: 'POST',
     url: 'https://memair.com/graphql',
     headers: {
-      'access_token': bundle.authData.access_token
+      'access-token': bundle.authData.access_token
     },
     body: 'query{DigitalActivities(first: 100){id timestamp duration digital_activity_type{slug} meta source}}'
   });
@@ -18,7 +18,7 @@ const createDigitalactivity = (z, bundle) => {
     method: 'POST',
     url: 'https://memair.com/graphql',
     headers: {
-      'access_token': bundle.authData.access_token
+      'access-token': bundle.authData.access_token
     },
     body: `mutation {Create(digital_activities: [{type: ${bundle.inputData.type} ${(bundle.inputData.duration != null) ? 'duration: ' + bundle.inputData.duration : ''} timestamp: "${bundle.inputData.timestamp}" meta: ${JSON.stringify(JSON.stringify(bundle.inputData.meta_data, null, "\r\t"))} }]) {id}}`
   });

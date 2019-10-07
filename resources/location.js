@@ -4,7 +4,7 @@ const listLocations = (z, bundle) => {
     method: 'POST',
     url: 'https://memair.com/graphql',
     headers: {
-      'access_token': bundle.authData.access_token
+      'access-token': bundle.authData.access_token
     },
     body: 'query{Locations(first: 100){id lat lon timestamp source point_accuracy}}'
   });
