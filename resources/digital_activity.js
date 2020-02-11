@@ -64,7 +64,7 @@ module.exports = {
       inputFields: [
         {
           key: 'timestamp',
-          required: false,
+          required: true,
           type: 'datetime',
           label: 'Timestamp'
         },
