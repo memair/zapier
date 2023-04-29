@@ -17,7 +17,7 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "js-yaml": "^3.13.1",
-    "zapier-platform-core": "8.3.0"
+    "zapier-platform-core": "14.0.0"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
